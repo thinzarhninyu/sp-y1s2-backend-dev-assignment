@@ -1,0 +1,152 @@
+<!-- 
+    THINZAR HNIN YU
+    DIT/FT/1B/03
+    2201014 
+-->
+
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Link to stylesheets -->
+    <link rel="stylesheet" type="text/css" href="http://localhost:8082/static/css/util.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8082/static/css/main.css">
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;600;700&family=Fira+Sans:wght@300&family=Limelight&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="http://localhost:8082/static/images/img-01.png" alt="IMG">
+                </div>
+
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        <!-- form title -->
+                        Customer Login
+                    </span>
+
+                    <!-- enter email -->
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" id="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- enter password -->
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" id="pwd" name="pass" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!-- log in button -->
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" id="Login">
+                            Login
+                        </button>
+                    </div>
+
+                    <!-- back button to go back to home page -->
+                    <div class="text-center mt-4">
+                        <a href="/" class="text-center">Back to Home</a>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        // if log in button is clicked
+        $(document).ready(function () {
+            console.log("A");
+            $("#Login").click(function () {
+                console.log("B");
+                // get email and password
+                var email = $("#email").val();
+                var password = $("#pwd").val();
+                var data = `{"email":"${email}","password":"${password}"}`;
+
+                // check for valid/invalid email/password and redirects to cartHome page if email and password are valid
+                console.log(data);
+                $.ajax({
+                    url: "http://localhost:8081/customer/login",
+                    type: "POST",
+                    data: data,
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (data, textStatus, xhr) {
+
+                        if (data != null) {
+                            console.log('success')
+                            console.log(data);
+
+                            var token = data.token;
+                            var userData = data.UserData;
+                            console.log(token)
+                            localStorage.setItem("token", token);
+                            localStorage.setItem("userInfo", userData);
+                            window.location.assign("http://localhost:8082/cartHome");
+
+                        } else {
+
+                            // shows alert if wrong email/password
+                            console.log("Wrong email/password");
+                            window.alert("Wrong email/password");
+
+                        }
+                    },
+                    error: function (xhr, textStatus, err) {
+                        console.log(err);
+                        window.alert("Wrong Email/password");
+                    }
+                });
+                return false;
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

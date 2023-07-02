@@ -1,0 +1,212 @@
+<!-- 
+    THINZAR HNIN YU
+    DIT/FT/1B/03
+    2201014 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Film Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;600;700&family=Fira+Sans:wght@300&family=Limelight&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Link to stylesheets -->
+    <link href="http://localhost:8082/static/css/general.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<style>
+    #dvd-detail {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm  h-25 header-nav ">
+            <div class="container">
+                <a href="/" class="navbar-brand h5">SP DVD</a>
+
+                <!-- How the header navbar will look like on screen sizes more than 767px -->
+                <nav class="navbar-nav navigation-bar">
+                    <a href="/adminHome" class="nav-item nav-link header-nav-box" aria-current="page">HOME</a>
+                    <div class="collapse navbar-collapse header-nav-box" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    INSERT
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" id="dropdown">
+                                    <li><a class="dropdown-item" href="/newActor/">Actor</a></li>
+                                    <li><a class="dropdown-item" href="/newCustomer/">Customer</a></li>
+                                    <li><a class="dropdown-item" href="/newFilm/">Film</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="/newAdmin/">Admin</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="collapse navbar-collapse header-nav-box" id="navbarNavDarkDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    SEARCH
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" id="dropdown">
+                                    <li><a class="dropdown-item" href="/searchActor/">Actor</a></li>
+                                    <li><a class="dropdown-item" href="/searchCustomer/">Customer</a></li>
+                                    <li><a class="dropdown-item" href="/searchFilm/">Film</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="/searchAdmin/">Admin</a></li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="/" class="nav-item nav-link header-nav-box" aria-current="page">LOG OUT</a>
+
+
+                </nav>
+
+                <!-- How the header navbar will look like on screen sizes less than 767px -->
+
+                <nav class="inline-block icon-navbar">
+                    <a href="/" class="nav-item nav-link d-inline-block pe-1" aria-current="page"><img
+                            src="http://localhost:8082/static/images/house.svg" alt=""></a>
+                    <a href="/cart/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/person.svg" alt=""></a>
+                    <a href="/adminLogin/" class="nav-item nav-link d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/book.svg" alt=""></a>
+                    <a href="/aboutUs/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/briefcase.svg" alt=""></a>
+                    <a href="mailto:THINZARYU.22@ichat.sp.edu.sg" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/ui-checks.svg" alt=""></a>
+                </nav>
+            </div>
+        </nav>
+
+        <div class="row text-center" style="margin-top: 2rem;">
+            <div class="col-md-12 col-xs-12 mt-5 pt-5">
+                <legend class="mt-2 pt-2">DVD</legend>
+
+                <div id="dvd-profile">
+                    <!-- display film details -->
+                </div>
+
+                <div>
+                    <!-- buttons to edit or delete film, edit button will redirect to another page, delete button will delete the film -->
+                    <button type="button" class="btn btn-primary mt-3 w-25" id="editFilmButton">EDIT</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary mt-3 w-25" id="deleteFilmButton">DELETE</button>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const baseUrl = "http://localhost:8081";
+
+            const url = window.location.toString();
+            const dvdID = parseInt(url.split("/")[4]);
+
+            // get dvd using dvdID
+            axios.get(`${baseUrl}/dvds/${dvdID}/admin`)
+                .then((response) => {
+                    const dvd = response.data;
+                    console.log(dvdID)
+                    console.log(dvd)
+
+                    // if dvd cannot be found
+                    if (dvd.title == undefined) {
+                        $("#dvd-profile").append(`
+                <h3>DVD not found!</h3>`);
+                        // disable the edit and delete buttons
+                        $('#editFilmButton').prop("disabled", true);
+                        $('#deleteFilmButton').prop("disabled", true);
+
+                    }
+                    // if dvd is found
+                    else {
+                        $("#dvd-profile").append(`
+                <h3>Name: ${dvd.title}</h3>
+                <p>${dvd.description}</p>
+              
+                    `)
+                    }
+
+                });
+
+
+            // when edit button is clicked
+            $(document).ready(function () {
+                console.log("A");
+                $("#editFilmButton").click(function () {
+                    console.log("B");
+                    // redirect to editFilm page
+                    window.location.assign('http://localhost:8082/dvds/' + dvdID + "/update");
+                });
+
+            });
+
+            // if delete button is clicked
+            $(document).ready(function () {
+                console.log("A");
+                $("#deleteFilmButton").click(function () {
+                    console.log("B");
+                    // delete the dvd using dvdID
+                    axios.delete(`${baseUrl}/dvds/${dvdID}`, { headers: { Authorization: "Bearer " + localStorage.getItem("token") } })
+                        .then((res) => {
+                            alert('Customer is successfully deleted!')
+                            // dvd no longer exist
+                            window.location.assign('http://localhost:8082/dvds/' + dvdID + '/admin');
+                        });
+
+                });
+
+            });
+
+            // log out button for admin (redirects to home page)
+            $("#Logout").click((event) => {
+                localStorage.clear();
+
+            });
+
+        </script>
+</body>
+
+</html>
