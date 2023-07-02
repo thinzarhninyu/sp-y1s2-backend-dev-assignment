@@ -1,0 +1,147 @@
+<!-- 
+    THINZAR HNIN YU
+    DIT/FT/1B/03
+    2201014 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;600;700&family=Fira+Sans:wght@300&family=Limelight&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Link to stylesheets -->
+    <link href="http://localhost:8082/static/css/general.css" rel="stylesheet" />
+
+
+    <style>
+        #films-list {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm  h-25 header-nav ">
+            <div class="container">
+                <a href="/" class="navbar-brand h5">SP DVD</a>
+
+                <!-- How the header navbar will look like on screen sizes more than 767px -->
+                <nav class="navbar-nav navigation-bar">
+                    <a href="/" class="nav-item nav-link header-nav-box" aria-current="page">HOME</a>
+                    <a href="/cart/" class="nav-item nav-link header-nav-box" aria-current="page">CART</a>
+
+                    <a href="/adminLogin/" class="nav-item nav-link header-nav-box" aria-current="page">ADMIN</a>
+                    <a href="mailto: THINZARYU.22@ichat.sp.edu.sg" class="nav-item nav-link header-nav-box"
+                        aria-current="page">FEEDBACK</a>
+
+
+                </nav>
+
+                <!-- How the header navbar will look like on screen sizes less than 767px -->
+                <nav class="inline-block icon-navbar">
+                    <a href="/" class="nav-item nav-link d-inline-block pe-1" aria-current="page"><img
+                            src="http://localhost:8082/static/images/house.svg" alt=""></a>
+                    <a href="/cart/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/person.svg" alt=""></a>
+                    <a href="/adminLogin/" class="nav-item nav-link d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/book.svg" alt=""></a>
+                    <a href="/aboutUs/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/briefcase.svg" alt=""></a>
+                    <a href="mailto:THINZARYU.22@ichat.sp.edu.sg" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/ui-checks.svg" alt=""></a>
+                </nav>
+            </div>
+        </nav>
+
+        
+        <div id="films" class="row mt-4">
+            <!-- dislay films details -->
+        </div>
+
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const baseUrl = "http://localhost:8081";
+
+        // get details for search
+        const queryString = window.location.toString();
+        const urlParams = (new URL(document.location)).searchParams
+        const category_id = parseInt(urlParams.get('category_id'))
+        const maxprice = parseFloat(urlParams.get('maxprice'))
+        const filmTitle = urlParams.get('title')
+
+        let films;
+
+
+
+        console.log(filmTitle)
+        console.log(category_id)
+        console.log(maxprice)
+
+        // get films using details provided
+        axios.get(`${baseUrl}/search?title=${filmTitle}&category_id=${category_id}&maxprice=${maxprice}`)
+            .then((response) => {
+                films = response.data;
+                console.log(films)
+                console.log(response)
+                films.forEach((film, index) => {
+
+                    const filmHTML = `
+                            <div class="cards  col-sm-6 col-lg-3 col-md-4 mb-3"><div class="card h-100" >
+                            
+                            <div class="card-body">
+                                <a href="/dvds/${film.film_id}" class="card-title h5">${film.title}</a>
+    <p class="card-text"><small>${film.description}</small></p>
+   
+  </div> <div class="card-footer">
+      <small class="text-muted">${film.name} - ${film.rating} - ${film.release_year}</small>
+    </div>
+</div></div>
+                    
+                        `;
+
+                    $("#films").append(filmHTML);
+                });
+            });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!-- 
+    THINZAR HNIN YU
+    DIT/FT/1B/03
+    2201014 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;400;500;600;700&family=Fira+Sans:wght@300&family=Limelight&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Link to stylesheets -->
+    <link href="http://localhost:8082/static/css/general.css" rel="stylesheet" />
+
+    <style>
+        #films-list {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .input-search {
+            width: '60%';
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+
+        <nav class="navbar navbar-expand-sm  h-25 header-nav ">
+            <div class="container">
+                <a href="/" class="navbar-brand h5">SP DVD</a>
+
+                <!-- How the header navbar will look like on screen sizes more than 767px -->
+                <nav class="navbar-nav navigation-bar">
+                    <a href="/" class="nav-item nav-link header-nav-box" aria-current="page">HOME</a>
+                    <a href="/cart/" class="nav-item nav-link header-nav-box" aria-current="page">CART</a>
+
+                    <a href="/adminLogin/" class="nav-item nav-link header-nav-box" aria-current="page">ADMIN</a>
+                    <a href="mailto: THINZARYU.22@ichat.sp.edu.sg" class="nav-item nav-link header-nav-box"
+                        aria-current="page">FEEDBACK</a>
+                </nav>
+
+                <!-- How the header navbar will look like on screen sizes less than 767px -->
+                <nav class="inline-block icon-navbar">
+                    <a href="/" class="nav-item nav-link d-inline-block pe-1" aria-current="page"><img
+                            src="http://localhost:8082/static/images/house.png" alt=""></a>
+                    <a href="/cart/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/person.svg" alt=""></a>
+                    <a href="/adminLogin/" class="nav-item nav-link d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/book.svg" alt=""></a>
+                    <!-- <a href="/aboutUs/" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/briefcase.svg" alt=""></a> -->
+                    <a href="mailto:THINZARYU.22@ichat.sp.edu.sg" class="nav-item nav-link  d-inline-block pe-1"><img
+                            src="http://localhost:8082/static/images/ui-checks.svg" alt=""></a>
+                </nav>
+            </div>
+        </nav>
+
+        <div class="mb-5 mt-5 pt-5">
+            <form>
+                <fieldset>
+                    <legend class="text-center mt-5">WHAT ARE YOU LOOKING FOR?</legend>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="mb-3">
+            <div class="col-md-8 inner-form row mr-auto ml-auto input-search">
+                
+                <!-- get title search -->
+                <div class="input-wrap first col-md-8 col-sm-12">
+                    <div class="input-field first w-100">
+                        <label>TITLE</label>
+                        <input type="text" class="w-100" placeholder="Search by title..." id="title" />
+                    </div>
+                </div>
+
+                <!-- get max price search -->
+                <div class="input-wrap second col-md-4 col-sm-12">
+                    <div class="input-field second">
+                        <label>MAX PRICE</label>
+                        <input type="number" class="w-100" placeholder="Max Price..." id="maxprice" />
+                    </div>
+                </div>
+
+
+                <!-- get category search using dropdown -->
+                <div class="input-wrap first col-md-8 col-sm-12 mt-4">
+                    <div class="input-field first w-100">
+                        <label>CATEGORY</label>
+                        <select class="form-select" id="categoryOptions">
+                            <option disabled selected value> -- CATEGORY -- </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- search button -->
+                <div class="col-md-4 mt-5">
+                    <button type="button" id="searchButton" class="btn btn-primary btn-md  w-100 ">Search</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- down arrow to jump to all films -->
+        <div class="mt-5 pt-5 ml-auto mr-auto w-100">
+            <div class="ml-auto mr-auto text-center">
+                <a href="#films">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-arrow-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="mt-5 pt-3 w-100" id="films">
+            <legend class="text-center mb-3">ALL FILMS</legend>
+            <div class="row" id="films-list">
+                <!-- display details of all films -->
+            </div>
+        </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script>
+            const baseUrl = "http://localhost:8081";
+
+            const url = window.location.toString();
+
+
+
+            // get category for category dropdown options
+            axios.get(`${baseUrl}/category/`)
+                .then((response) => {
+                    categories = response.data;
+                    console.log(response.data)
+
+                    categories.forEach((category, index) => {
+                        const categoryHTML = `
+                        <option value="${category.category_id}">${category.name}</option>
+                        `;
+                        console.log(categoryHTML)
+                        $("#categoryOptions").append(categoryHTML);
+                    });
+                });
+
+            // get all films
+            axios.get(`${baseUrl}/films/`)
+                .then((response) => {
+                    const films = response.data;
+                    console.log(films);
+                    films.forEach((film) => {
+                        $("#films-list").append(`<div class="cards col-sm-6 col-lg-3 col-md-4 mb-3"><div class="card h-100" >
+                            
+                            <div class="card-body">
+    <a href="/dvds/${film.film_id}" class="card-title h5">${film.title}</a>
+    <p class="card-text"><small>${film.description}</small></p>
+    <a class="btn btn-outline-primary" href="/customerReview/${film.film_id}" role="button">Review</a>
+  </div> <div class="card-footer">
+      <small class="text-muted">${film.name} - ${film.rating} - ${film.release_year}</small>
+    </div>
+</div></div>
+                    `);
+                    });
+                });
+
+                // if both category and title are not entered, disable the search button
+            if ($("#categoryOptions") == 0 && $("#title").val() == "") {
+
+                $('#searchButton').prop("disabled", true);
+
+
+            }
+
+            // if search button is clicked
+            $(document).ready(function () {
+                console.log("A");
+                $("#searchButton").click(function () {
+                    console.log("B");
+
+                    // get category_id, filmTitle and maxprice
+                    const category_id = $("#categoryOptions").val() || 0;
+                    const filmTitle = $("#title").val() || "";
+                    const maxprice = $('#maxprice').val() || 0;
+                    console.log(filmTitle)
+                    console.log(category_id)
+                    console.log(maxprice)
+                    
+                    // if both category_id and filmTitle are not given, alert 
+                    if (category_id == 0 && filmTitle == "") {
+                        alert('Please enter title or choose category to proceed.')
+                        window.location.assign('http://localhost:8082/')
+                    }
+                    // if either one/two is given
+                    else {
+                        // redirect to dvds page for search results
+                        window.location.assign('http://localhost:8082/search?title=' + filmTitle + "&category_id=" + category_id + "&maxprice=" + maxprice);
+
+                    }
+
+
+                });
+
+            });
+
+        </script>
+
+</body>
+
+</html>

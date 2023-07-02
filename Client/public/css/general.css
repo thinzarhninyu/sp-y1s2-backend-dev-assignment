@@ -1,0 +1,67 @@
+/* 
+    THINZAR HNIN YU
+    DIT/FT/1B/03
+    P2201014 
+*/
+
+body {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-family: 'Catamaran', sans-serif;
+    background-color: #c7e5f2;
+}
+
+#navigation {
+    z-index: 2;
+}
+
+.header-nav {
+    border-bottom: 2px solid black;
+}
+
+.header-nav-box {
+    border: 2px solid black;
+    margin-left: 5px;
+}
+
+.header-nav-box:hover {
+    background-color: #FFE699;
+    /* font-size: larger; */
+}
+
+.page-nav:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 767px) {
+    .navigation-bar {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    .icon-navbar {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .xs-margin-fix {
+        margin-bottom: 25px;
+    }
+
+    .xs-align-fix {
+        display: block;
+        text-align: center;
+
+    }
+
+    .xs-center-fix {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
