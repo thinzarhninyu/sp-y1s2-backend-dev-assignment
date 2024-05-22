@@ -6,7 +6,7 @@ Download the file P2201014_CA2_DIT1B03.zip and unzip the folder.
 
 Open MySQL Workbench.
 Click on Administration, and then click on Users and Priviledges under Management.
-Click on "Add Account" and add "bed_dvd_root" as the Login Name. Add "pa$$woRD123" as the Password. Type the password again for Confirm Password.
+Click on "Add Account" and add the Login Name. Add the Password. Type the password again for Confirm Password. Put the details in the .env file in the Server directory.
 Under Administrative Roles, select all priviledges for the user. Click on "Apply" to add the user and apply the priviledges to the user. 
 Create a new schema by clicking on the cylindrical + icon and name it "bed_dvd_db".
 Select the bed_dvd_db. Click on File >> Open SQL Script, and choose "sakila_bed" from the folder that was unzipped.
