@@ -3,9 +3,6 @@
 // P2201014
 
 const db = require('./databaseConfig')
-var config = require('../config.js');
-var jwt = require('jsonwebtoken');
-const Connection = require("mysql/lib/Connection");
 
 var customerDB = {
 
